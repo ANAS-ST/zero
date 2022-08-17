@@ -1,0 +1,14 @@
+{
+    "name": "zero",
+    "description": "zero",
+    "keywords": [],
+    "repository": "https://github.com/ANAS-ST/zero",
+    "env": {},
+    "stack": "heroku-20",
+    "formation": {
+        worker{
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
