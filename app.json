@@ -6,7 +6,7 @@
     "env": {},
     "stack": "heroku-20",
     "formation": {
-        worker{
+        "worker": {
             "quantity": 1,
             "size": "free"
         }
