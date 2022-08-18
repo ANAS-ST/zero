@@ -10,12 +10,7 @@ channel = -1001633495002
 bot = Client("Zero", api_id, api_hash, bot_token=bot_token, plugins=dict(root="plugins"))
 
 
-reply_markup = InlineKeyboardMarkup(
-        [
-            [InlineKeyboardButton("a", "a"), InlineKeyboardButton("b", "b")],
-            [InlineKeyboardButton("c", "c")]
-        ]
-    )
+
 
 scores = {}  # {uid: {"name": NAME, "score": 0}}
 
@@ -38,7 +33,7 @@ async def Q(_, msg: Message):
 
 @bot.on_message(filters.command("start"))
 async def start(_, msg: Message):
-    await msg.reply_text("Hello", reply_markup=reply_markup)
+    await msg.reply_text("السلام عليكم ورحمة الله وبركاته\n لنبدأ الاختبار")
 
 
 @bot.on_message(filters.command("results"))
@@ -58,9 +53,9 @@ async def callback(_, cb: CallbackQuery):
         scores[uid] = {"name": name, "score": 0}
     if data == "a":
         scores[uid]["score"] += 1
-        await cb.answer(f'True - {scores[uid]["score"]}')
+        await cb.answer(f'حسنت تم إضافة نقطة إلى رصيدك - {scores[uid]["score"]}', show_alert=True)
     else:
-        scores[uid]["score"] -= 1
-        await cb.answer(f'False - {scores[uid]["score"]}')
+        
+        await cb.answer(f'للأسف إجابة خاطئة - {scores[uid]["score"]}', show_alert=True)
 
 bot.run()
