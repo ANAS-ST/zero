@@ -69,7 +69,7 @@ async def callback(_, cb: CallbackQuery):
         		row.append(InlineKeyboardButton('❌' + button.text, button.data))
         	buttons.append(row)
     reply_markup = InlineKeyboardMarkup(buttons)
-	await cb.message.edit_reply_markup(reply_markup=reply_markup)
+    await cb.message.edit_reply_markup(reply_markup=reply_markup)
 
 bot.run()
 
