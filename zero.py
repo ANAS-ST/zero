@@ -1,3 +1,4 @@
+
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
@@ -55,7 +56,33 @@ async def callback(_, cb: CallbackQuery):
         scores[uid]["score"] += 1
         await cb.answer(f'حسنت تم إضافة نقطة إلى رصيدك - {scores[uid]["score"]}', show_alert=True)
     else:
-        
         await cb.answer(f'للأسف إجابة خاطئة - {scores[uid]["score"]}', show_alert=True)
+    
+    keyboard = cb.message.reply_markup.inline_keyboard
+    buttons = []
+    for row in keyboard:
+        row = []
+        for button in row:
+        	if button.data == "a":
+        		row.append(InlineKeyboardButton('✅' + button.text, button.data))
+        	else:
+        		row.append(InlineKeyboardButton('❌' + button.text, button.data))
+        	buttons.append(row)
+    reply_markup = InlineKeyboardMarkup(buttons)
+	await cb.message.edit_reply_markup(reply_markup=reply_markup)
 
 bot.run()
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
