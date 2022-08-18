@@ -60,9 +60,9 @@ async def callback(_, cb: CallbackQuery):
     
     keyboard = cb.message.reply_markup.inline_keyboard
     buttons = []
-    for row in keyboard:
+    for row_ in keyboard:
         row = []
-        for button in row:
+        for button in row_:
         	if button.data == "a":
         		row.append(InlineKeyboardButton('✅' + button.text, button.data))
         	else:
